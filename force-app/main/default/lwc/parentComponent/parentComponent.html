@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-m-top_small slds-m-bottom_medium">
+        <lightning-button variant="brand" label={showPlayers} title="Show" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+        <lightning-button variant="brand" label={showPlayers2} title="Show" onclick={handleClick2} class="slds-m-left_x-small"></lightning-button>
+    </div>
+    <lightning-card title="parent-Component">
+        <lightning-button label="Show Active" onclick={shows_Active}></lightning-button>
+        <lightning-button label="Show Inactive" onclick={shows_Inactive}></lightning-button>
+        <template if:true={account1}>
+             <lightning-datatable key-field="Id" 
+                                  data={account1} 
+                                  columns={columns} 
+                                  show-row-number-column="true"
+                                  onrowselection={handleRowSelection}>
+             </lightning-datatable>
+        </template>
+        <template if:true={account2}>
+            <lightning-datatable key-field="Id" data={account2} columns={columns} show-row-number-column="true"></lightning-datatable>
+        </template>
+    </lightning-card>
+    <c-show-hide-datatable></c-show-hide-datatable>
+</template>
