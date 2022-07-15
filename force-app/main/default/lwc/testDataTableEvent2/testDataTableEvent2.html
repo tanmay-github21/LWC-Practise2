@@ -1,0 +1,7 @@
+<template>
+    <lightning-card title="Child">
+        <template if:true={accounts1}>
+            <lightning-datatable key-field="Id" columns={columns} data={accounts1} onrowselection={handleRowSelection}></lightning-datatable>
+        </template>
+    </lightning-card>
+</template>
