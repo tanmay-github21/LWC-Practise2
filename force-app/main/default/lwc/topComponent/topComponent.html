@@ -1,0 +1,14 @@
+<template>
+     <lightning-card title="Top Component LWC Name">
+         <lightning-button label="Active-Accounts" onclick={show_Active}></lightning-button>
+         <lightning-button label="Inactive Accounts" onclick={show_Inactive}> </lightning-button>
+         <template if:true={accounts1}>
+              <lightning-datatable key-field="Id"
+                                   data={accounts1} columns={columns}> </lightning-datatable>
+         </template>
+
+         <template if:true={accounts2}>
+              <lightning-datatable key-field="Id" data={accounts2} columns={columns}></lightning-datatable>
+         </template>
+     </lightning-card>
+</template>

@@ -1,0 +1,16 @@
+<template>
+     <lightning-card title="Imperative Call">
+          <lightning-button label="Show Active Accounts" onclick={show_Active}></lightning-button>
+          <lightning-button label="Show Inactive Accounts" onclick={show_Inactive}></lightning-button>
+          <template if:true={isLoading}>
+              <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+          </template>
+          <template if:true={accounts1}>
+              <lightning-datatable key-field="Id" columns={columns} data={accounts1}></lightning-datatable>
+          </template>
+          
+          <template if:true={accounts2}>
+            <lightning-datatable key-field="Id" columns={columns} data={accounts2}></lightning-datatable>
+          </template>
+     </lightning-card>
+</template>

@@ -1,0 +1,12 @@
+<template>
+     <lightning-card title="Parent-Imperative">
+          <lightning-button label="Show Active" onclick={show_Active}></lightning-button>
+          <lightning-button label="Show Inactive" onclick={show_Inactive}></lightning-button>
+          <lightning-button-icon icon-name="utility:sync" 
+                                 variant="border-filled" 
+                                 alternative-text="Sync The App" 
+                                 slot="actions"></lightning-button-icon>
+     </lightning-card>
+     <c-imperative-child></c-imperative-child>
+   <c-imperative-child onpassparent={handleSelectedRows}></c-imperative-child>   
+</template> 

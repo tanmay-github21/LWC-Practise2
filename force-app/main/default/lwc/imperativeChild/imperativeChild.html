@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Imperative-Child">
+        <template if:true={accounts1}>
+             <lightning-datatable key-field="Id" 
+                                  data={accounts1} 
+                                  columns={columns} 
+                                  onrowselection={handleRowSelection}
+                                  onrowaction={handleRowAction}
+                                  max-row-selection="1">
+             </lightning-datatable>
+        </template>
+
+        <template if:true={accounts2}>
+            <lightning-datatable key-field="Id" 
+                                 data={accounts2} 
+                                 columns={columns} 
+                                 onrowselection={handleRowSelection}
+                                 onrowaction={handleRowAction}
+                                 max-row-selection="1">
+            </lightning-datatable>
+            <div class="slds-modal_footer">
+                 <lightning-button icon-name="utility:close" label="Close Form" variant="branch" onclick={close}></lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>

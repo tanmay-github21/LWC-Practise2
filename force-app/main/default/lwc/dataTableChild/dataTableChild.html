@@ -1,0 +1,17 @@
+<template>
+      <lightning-card title="Slave Table">
+            <template if:true={accounts1}>
+                 <lightning-datatable key-field="Id"
+                 columns={columns}
+                 data={accounts1}
+                 max-row-selection="1"
+                 onrowselection={handleRowSelection}
+                 show-row-number-column="true">
+                </lightning-datatable>
+            </template>
+
+            <template if:true={accounts2}>
+                 <lightning-datatable key-field="Id" columns={columns} data={accounts2} max-row-selection="1" onrowselection={handleRowSelection2}></lightning-datatable> 
+            </template>
+      </lightning-card>
+</template>
