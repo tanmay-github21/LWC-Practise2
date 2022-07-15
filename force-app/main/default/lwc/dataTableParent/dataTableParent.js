@@ -24,6 +24,8 @@ export default class DataTableParent extends LightningElement
    {    
         console.log('called from child');
         const textValue=event.detail;
+        var convertedValue=JSON.stringify(textValue);
+        console.log('From Parent converted Value'+'\t'+convertedValue);
         this.message=textValue;
         console.log('Parent Received The Following'+'\t'+this.message+'\t'+textValue);
    }
