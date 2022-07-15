@@ -1,0 +1,13 @@
+<template>
+     <lightning-card>
+          <template if:true={accounts1}>
+                <lightning-datatable key-field="Id"
+                                    data={accounts1}
+                                    columns={columns}
+                                    onrowselection={copyValue}>
+                </lightning-datatable>
+
+                <lightning-input type="text" placeholder="Copies Values"></lightning-input>
+          </template>
+     </lightning-card>
+</template>

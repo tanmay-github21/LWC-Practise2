@@ -11,12 +11,17 @@
             </template>
 
             <template if:true={accounts2}>
-                 <lightning-datatable key-field="Id" columns={columns} data={accounts2} max-row-selection="1" onrowselection={handleRowSelection2}></lightning-datatable> 
+                  <lightning-datatable key-field="Id" 
+                                      columns={columns} 
+                                      data={accounts2} 
+                                      max-row-selection="1" 
+                                      onrowselection={handleRowSelection2}>
+                  </lightning-datatable> 
             </template>
       </lightning-card>
       <lightning-card title="Capitalize Input">
-            Hello  <p style="text-transform:uppercase">  {user_Input} </p>
-              <lightning-input label="Name" value={user_Input} onchange={nameChange}></lightning-input>
+            Hello  <p style="text-transform:uppercase">  {selectedAccountId} </p>
+              <lightning-input label="Name" value={selectedAccountId} onchange={nameChange}></lightning-input>
             <p style="text-align: justify;">This is Justified Allignment</p>  
       </lightning-card>
 </template>

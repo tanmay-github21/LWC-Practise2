@@ -7,7 +7,7 @@ export default class DataTableChild extends LightningElement {
     @track user_Input;
     accounts1; 
     accounts2;
-    selectedAccountId=''; 
+    @track selectedAccountId; 
     @api message;
     @track error; 
 
