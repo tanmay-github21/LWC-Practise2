@@ -1,26 +1,16 @@
-import { LightningElement, api, wire, track} from 'lwc';
-import inactive_Accounts from '@salesforce/apex/active_Inactive_Accounts.inactive_Accounts';
-const columns= [{label:"Name", fieldName:"Name"}, {label:"ID", fieldName:"ID"}, {label:"Status", fieldName:"Active__c"}]; 
-export default class TestDataTableEvent2 extends LightningElement 
+import { LightningElement, track, wire,api } from "lwc";
+import inactive_Accounts from "@salesforce/apex/active_Inactive_Accounts.inactive_Accounts";
+import active_Accounts from "@salesforce/apex/active_Inactive_Accounts.active_Accounts";
+const columns=[{label:"Name", fieldName:"Name"}, {label:"Status", fieldName:"Active__c"}, {label:"Id", fieldName:"ID"}];
+const columns2=[{label:"Name", fieldName:"Name"}, {label:"Status", fieldName:"Active__c"},{label:"ID", fieldName:"Id"}];
+export default class TestDataTableEvent2 extends LightningElement
 {
-    accounts1; 
-    columns=columns; 
-    @track c1;
-    @api copyValue;
-    @track c2;
-    @api showAccount()
-    {
-        inactive_Accounts()
-        .then(result=>{this.accounts1=result; console.log('Console log child',this.accounts1);})
-        .catch(error=>{this.error=error;}); 
-    }
+     @api copyValue; 
+     @track c1; 
+     accounts1; 
+     accounts2; 
 
-    handleRowSelection=event=>
-    {
-        this.copyValue= event.detail.selectedRows; 
-        console.log('Console log Hello From Child Component 4654',this.copyValue); 
-        const childConst= new customEvent('datatable', {detail:this.c1});
-        this.dispatchEvent(childConst); 
-        console.log('Console log event firederty gkrgnr 454554'); 
-    }
+    @api 
+
+
 }

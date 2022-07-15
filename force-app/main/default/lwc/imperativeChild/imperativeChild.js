@@ -20,7 +20,8 @@ export default class ImperativeChild extends LightningElement {
          console.log('Called By Parent');
          active_Accounts()
          .then(result=> {this.accounts1=result; console.log('Result',result);})
-         .catch(error=> {this.error=error; console.log('Error Occured'+'\t'+error);}); 
+         .catch(error=> {this.error=error; console.log('Error Occured'+'\t'+error);});
+         //cnjcfnj 
      }
 
      @api handleValueChange2()

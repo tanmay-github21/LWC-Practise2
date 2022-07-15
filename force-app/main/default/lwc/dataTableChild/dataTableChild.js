@@ -7,7 +7,8 @@ export default class DataTableChild extends LightningElement {
     @track user_Input;
     accounts1; 
     accounts2;
-    @track selectedAccountId; 
+    @api active;
+    @track inactive;  
     @api message;
     @track error; 
 
@@ -29,10 +30,18 @@ export default class DataTableChild extends LightningElement {
 
     handleRowSelection= event=> 
     {
-         this.selectedAccountId= event.detail.selectedRows; 
-         console.log('Selected id event',this.selectedAccountId+'\n'+'Event Details'+'\t'+event.detail.selectedRows);
-         const passParent= new customEvent('parentpush',{detail:{message:this.selectedAccountId}});
-         this.dispatchEvent(passParent);
+        this.active= event.detail.selectedRows; 
+        console.log('Selected id event',this.active+'\n'+'Event Details'+'\t'+event.detail.selectedRows);
+        const passParent= new customEvent('parentpush',{detail:{message:this.active}});
+        this.dispatchEvent(passParent);
+    }
+
+    handleRowSelection2=event=>
+    {
+        this.inactive=event.detail.selectedRows;
+        console.log('DataTable Child inactive',this.inactive); 
+        const passParentinactive= new customEvent('inactivedt', {detail:this.inactive});
+        this.dispatchEvent(passParentinactive); 
     }
 
     nameChange= event=> 

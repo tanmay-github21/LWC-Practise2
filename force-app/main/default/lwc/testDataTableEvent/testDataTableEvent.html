@@ -1,10 +1,9 @@
 <template>
-     <lightning-card title="Test Tracking">
-          <lightning-input label="Show Subject" value={user_Input} onchange={nameChange}></lightning-input>
-          <lightning-input label="Copied Value" value={user_Input}></lightning-input>
+     <lightning-card title="Parent Component">
+          <lightning-input label="Show Subject" placeholder="Enter Something" value={user_Input} onchange={nameChange}></lightning-input>
+          <lightning-input label="Copied Value" placeholder="Copied Data" value={user_Input}></lightning-input>
+          <lightning-button label="Show Active" onclick={callChild}></lightning-button>
+          <lightning-button label="Show Inactive" onclick={callChild2}></lightning-button>
      </lightning-card>
-     <lightning-card title="Label NotFirst">
-          <lightning-input value={user_Input} label="NFX"></lightning-input>
-          <lightning-input value={user_Input} label="PQT"></lightning-input>
-     </lightning-card>
+     <c-test-data-table-event2 onactiveaccount={handleDataTable} oninactiveaccount={handleDataTable2}></c-test-data-table-event2>
 </template>

@@ -1,7 +1,12 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
 <template>
-    <lightning-card title="Child">
-        <template if:true={accounts1}>
-            <lightning-datatable key-field="Id" columns={columns} data={accounts1} onrowselection={handleRowSelection}></lightning-datatable>
-        </template>
+    <lightning-card title="Child DataTable">
+         <template if:true={accounts1}>
+              <lightning-datatable key-field="Id" columns={columns} data={accounts1} onrowselection={activeSelected}></lightning-datatable>
+         </template>
+         <template if:true={accounts2}>
+              <lightning-datatable key-field="Id" columns={columns2} data={accounts2} onrowselection={inactiveSelected}></lightning-datatable>
+         </template>
     </lightning-card>
 </template>
