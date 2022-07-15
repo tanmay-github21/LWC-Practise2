@@ -9,14 +9,14 @@ export default class DataTableParent extends LightningElement
    childCalled()
    {
        console.log('Active Account Fired'); 
-       this.template.querySelector("c-data-table-child").activeAccount(); 
+       this.template.querySelector("c-data-table-child").callP1(); 
        console.log('Child Called'); this.showNotifications();
    }
 
    childCalled2()
    {
       console.log('Inactive Accounts Parent Method Fired');
-      this.template.querySelector("c-data-table-child").inactiveAccount(); 
+      this.template.querySelector("c-data-table-child").callP2(); 
       this.showNotifications(); 
    }
 

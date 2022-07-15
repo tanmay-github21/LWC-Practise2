@@ -1,27 +1,12 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
 <template>
-      <lightning-card title="Slave Table">
-            <template if:true={accounts1}>
-                 <lightning-datatable key-field="Id"
-                 columns={columns}
-                 data={accounts1}
-                 max-row-selection="1"
-                 onrowselection={handleRowSelection}
-                 show-row-number-column="true">
-                </lightning-datatable>
-            </template>
-
-            <template if:true={accounts2}>
-                  <lightning-datatable key-field="Id" 
-                                      columns={columns} 
-                                      data={accounts2} 
-                                      max-row-selection="1" 
-                                      onrowselection={handleRowSelection2}>
-                  </lightning-datatable> 
-            </template>
-      </lightning-card>
-      <lightning-card title="Capitalize Input">
-            Hello  <p style="text-transform:uppercase">  {selectedAccountId} </p>
-              <lightning-input label="Name" value={selectedAccountId} onchange={nameChange}></lightning-input>
-            <p style="text-align: justify;">This is Justified Allignment</p>  
-      </lightning-card>
+     <lightning-card title="Child Data Table">
+          <template if:true={accounts1}>
+               <lightning-datatable key-field="Id" data={accounts1} columns={columns} onrowselection={sendActiveEvent}></lightning-datatable> 
+          </template>
+          <template if:true={accounts2}>
+               <lightning-datatable key-field="Id" data={accounts2} columns={columns} onrowselection={sendInactiveEvent}></lightning-datatable> 
+          </template>
+     </lightning-card>
 </template>
