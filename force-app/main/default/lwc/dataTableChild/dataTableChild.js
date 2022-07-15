@@ -33,5 +33,6 @@ export default class dataTableChild extends LightningElement
         console.log('console log data table captured'+'\t'+converted);
         const account1= new CustomEvent('showactive', {message:this.apiValue}); 
         this.dispatchEvent(account1);
+        console.log('Event fired from the child'); 
     }
 }
