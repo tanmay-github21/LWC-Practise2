@@ -1,6 +1,10 @@
 <template>
-     <lightning-card>
-          <lightning-input type="text" placeholder="Shows Selected Value" value={parameter}></lightning-input>
-          <lightning-button label="Show Me" onclick={showMe}></lightning-button>
-     </lightning-card>     
+     <lightning-card title="Test Tracking">
+          <lightning-input label="Show Subject" value={user_Input} onchange={nameChange}></lightning-input>
+          <lightning-input label="Copied Value" value={user_Input}></lightning-input>
+     </lightning-card>
+     <lightning-card title="Label NotFirst">
+          <lightning-input value={user_Input} label="NFX"></lightning-input>
+          <lightning-input value={user_Input} label="PQT"></lightning-input>
+     </lightning-card>
 </template>
