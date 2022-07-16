@@ -1,0 +1,15 @@
+create Aura components and Lightning web components
+
+USAGE
+  $ sfdx force:lightning:COMMAND
+
+TOPICS
+  force:lightning:app        create a Lightning app
+  force:lightning:component  create a bundle for an Aura component or a
+                             Lightning web component
+  force:lightning:event      create a Lightning event
+  force:lightning:interface  create a Lightning interface
+  force:lightning:lwc        tools for Lightning web components in a Salesforce
+                             DX workspace
+  force:lightning:test       create a Lightning test
+
