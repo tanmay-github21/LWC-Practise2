@@ -26,11 +26,12 @@ export default class Component2 extends LightningElement
     }
     handleSelection=event=> 
     {
-        var dr= event.detail.selectedrows;
-        var converted_Value= JSON.stringify(this.publicProperty);
-        const passParent= new CustomEvent('selected',{detail:this.publicProperty});
-        this.dispatchEvent(passParent);
-        console.log('Console log event dispatched');  
-        
+        var selectedRecords= this.template.querySelector("lightning-datatable").getSelectedRows(); 
+        let id='';
+        selectedRecords.forEach(currentItem => {id= id+','+currentItem.Id; console.log('Console log currentid'+'\t'+currentItem.Id)}); 
+        this.publicProperty= id.replace(/^,/,''); 
+        console.log('Console log property id'+'\t'+this.publicProperty); 
+        const passParent= new CustomEvent('selected', {detail:this.publicProperty});
+        this.dispatchEvent(passParent); 
     }
 }

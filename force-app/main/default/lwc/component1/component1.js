@@ -16,12 +16,11 @@ export default class Component1 extends LightningElement
     }
     handleCase=event=>
     {
-        console.log('Console log parent hello'); 
-        const childValue2=event.detail; 
-        console.log('Console log Received the following from child'+'\t'+childValue2);
-        this.message2= childValue2; 
-        caseList({passed_Id:this.message2})
-        .then(result=>{this.case=result.data; console.log('Console log Case list'+'\t'+caseList);})
-        .catch(error=>{this.error=error; console.error('Console log error happened while getting cases'+'\t'+this.error);});
+       console.log('Console log Beigning of Parent handleCase Method'); 
+       const childValue2= event.detail; 
+       console.log('Console log-parent received the following'+'\t'+childValue2);
+       this.message2=childValue2;
+       caseList(accountId,this.message2);
+       console.log('Console log Case method triggered') ;
     }
 }
