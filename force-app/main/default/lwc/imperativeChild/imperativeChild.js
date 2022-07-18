@@ -1,7 +1,7 @@
 import { LightningElement, track, api, wire} from 'lwc';
 import active_Accounts from '@salesforce/apex/active_Inactive_Accounts.active_Accounts';
 import inactive_Accounts from '@salesforce/apex/active_Inactive_Accounts.inactive_Accounts';
-import caseList from '@salesforce/apex/active_Inactive_Accounts.caseList'; 
+// import caseList from '@salesforce/apex/active_Inactive_Accounts.caseList'; 
 const actions=[{label:'View Cases', name:'viewCases'}, 
                {label:'View Record', name:'viewRecord'}];
 

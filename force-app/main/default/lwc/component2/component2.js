@@ -5,34 +5,32 @@ const columns=[{label:"Name", fieldName:"Name"},{label:"Status", fieldName:"Acti
 export default class Component2 extends LightningElement 
 {
     @api publicProperty;
-    // @track message;
+    @api accountId;
     @track error; 
-    accounts1=[]; 
+    @track accounts1 
     columns=columns;
     @wire(inactive_Accounts)
     wire_Inactive({data, error})
     {
         if(data)
         {
-            this.accounts1=data;
-            console.log('Console log wire method'+'\t'+this.accounts1); 
-            this.error= undefined; 
+            this.accounts1=data; 
+            console.log('Console log accounts received'+'\t'+this.accounts1); 
         }
         else if (error)
         {
-            this.error=error; 
-            console.error('console log error occured'+'\t'+this.error.name); 
-            
+            this.error=error;
+            console.error('Error Occured'+'\t'+this.error);
         }
 
     }
     handleSelection=event=> 
     {
-        console.log('Console log Entered into handle event'); 
-        this.publicProperty= event.detail.selectedRows;
-        console.log('Console log event property'+'\t'+this.publicProperty);
+        var dr= event.detail.selectedrows;
+        var converted_Value= JSON.stringify(this.publicProperty);
         const passParent= new CustomEvent('selected',{detail:this.publicProperty});
         this.dispatchEvent(passParent);
-        console.log('Console log event dispatched');
+        console.log('Console log event dispatched');  
+        
     }
 }

@@ -1,34 +1,42 @@
 public class active_Inactive_Accounts
 {
-     @AuraEnabled(Cacheable=true)
-     public static List<Account> active_Accounts()
-     {
-         List<Account> activeList= new List<Account> ([ Select Name, Active__c from Account WHERE Active__c='Yes' Limit 4]);
-         if(activeList.size()>0)
-         {System.debug('Active accounts size'+'\t'+activeList.size()); return activeList;}
-         else {System.debug('No Active Accounts Found'); return null;}
-
-     }
-     
-     @AuraEnabled(cacheable=true) 
-     public static List<Account> inactive_Accounts()
-     {
-        List<Account> InactiveList= new List<Account> ([ Select Name, Active__c from Account WHERE Active__c='No' Limit 4]);
-        if(InactiveList.size()>0)
-        {System.debug('Active accounts size'+'\t'+InactiveList.size()); return InactiveList;}
-        else {System.debug('No Active Accounts Found'); return null;}
-     }
-
-     @AuraEnabled(cacheable= true)
-     public static List<case> caseList(ID passed_Id)
-     {
-        System.debug('Entered Into Apex Class'+'\n'+ 'Id Received from LWC'+'\t'+passed_Id);  
-        return [Select CaseNumber, Status from Case WHERE AccountID =: passed_Id limit 4]; 
-     }
-
-     @AuraEnabled
-     public static Boolean assignValues(ID lwcId)
-     {
-         return null;
-     }
+    @AuraEnabled(cacheable=true)
+    public static List<Account> active_Accounts() 
+    {
+       List<Account> accounts= new LIst<Account> ([Select Name, active__c from account WHERE Active__c='Yes' Limit 5]); 
+       if(accounts.size()>0) 
+       {
+           System.debug('Apex active accounts'+'\t'+accounts.size()); 
+           return accounts; 
+       }
+       else return null;  
+    }
+    
+    @AuraEnabled(cacheable=true)
+    public static List<Account> inactive_Accounts() 
+    {
+       List<Account> accounts2= new LIst<Account> ([Select Name, active__c from account WHERE Active__c='Yes' Limit 5]); 
+       if(accounts2.size()>0) 
+       {
+           System.debug('Apex active accounts'+'\t'+accounts2.size()); 
+           return accounts2; 
+       }
+       else return null;  
+    }
+    
+    @AuraEnabled
+    public static List<Case> caseList(Id accountid){
+        try 
+        {
+           List<Case> cases= new List<Case> ([Select CaseNumber, Status, accountId from Case WHERE AccountId=:accountid])    ;
+           if(cases.size()>0)
+           {
+               System.debug('Apex case list'+'\t'+cases.size());
+               return cases;
+           }
+           else return null;  
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }
