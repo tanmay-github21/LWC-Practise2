@@ -1,7 +1,7 @@
 import { LightningElement, track, api, wire} from 'lwc';
 import active_Accounts from '@salesforce/apex/active_Inactive_Accounts.active_Accounts';
 import inactive_Accounts from '@salesforce/apex/active_Inactive_Accounts.inactive_Accounts';
-// import caseList from '@salesforce/apex/active_Inactive_Accounts.caseList'; 
+import caselist from '@salesforce/apex/active_Inactive_Accounts.caselist';
 const actions=[{label:'View Cases', name:'viewCases'}, 
                {label:'View Record', name:'viewRecord'}];
 
@@ -14,7 +14,9 @@ export default class ImperativeChild extends LightningElement {
      accounts1;
      accounts2;
      recordId;
+     text;
      columns=columns; 
+     @api publicProperty;
      @api handleValueChange()
      {
          console.log('Called By Parent');
@@ -33,26 +35,19 @@ export default class ImperativeChild extends LightningElement {
      }
 
      handleRowSelection = event => 
-     {        
-          var account_Selected=event.detail.selectedRows; 
-          console.log('Value Captured'+'\t'+account_Selected);
-          if(account_Selected.length>0)
-          {
-              console.log('Entered into event block');
-              var el = this.template.querySelector('lightning-datatable');
-              console.log('Lightning datatable'+'\t'+el);
-              this.selectedRows=el.selectedRows; //putting this to the var shows other fields such as name along with the id 
-              console.log('Selected Row',account_Selected);
-              // console.log('Selected Row Id',+'\t'+this.selectedRows);
-              const selectedEvent= new customEvent('passparent', {detail:event.target.value,bubbles:false});
-              console.log('Before event dispatch');
-              this.dispatchEvent(fromChild); 
-              console.log('After event dispatch');
-            // @wire(caseList, {passed_Id:this.selectedRows})
-            // wiredData({data,error})
-            // {}
-
-        }
-          
+     {
+         var selectedId= this.template.querySelector("lightning-datatable").getSelectedRows(); 
+         let id='';
+         selectedId.forEach(currentElement => {id=id+','+currentElement.Id});        
+         this.publicProperty=id.replace(/^,/,''); 
+         const passParent= new CustomEvent('caselist', {detail:{accountid: this.publicProperty}}); 
+         this.dispatchEvent(passParent); 
+         console.log('console log from imperative child event passed to apex class');
+     }
+     callParent=event=>
+     {
+         this.text='Hello this is tanmay'; 
+         const passParent2= new CustomEvent('passtext',{detail:this.text});
+         this.dispatchEvent(passParent2);
      }
 }

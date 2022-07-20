@@ -1,12 +1,10 @@
 <!-- sldsValidatorIgnore -->
 <!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
 <template>
      <lightning-card title="Component-2">
           <template if:true={accounts1}>
-               <lightning-datatable key-field="Id" data={accounts1} columns={columns} onrowselection={handleSelection} max-row-selection="1"></lightning-datatable>
-          </template>
-          <template if:true={error}>
-               {error}
+               <lightning-datatable key-field="Id" data={accounts1} columns={columns}> </lightning-datatable>
           </template>
      </lightning-card>
 </template>

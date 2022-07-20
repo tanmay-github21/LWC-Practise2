@@ -1,10 +1,9 @@
 <!-- sldsValidatorIgnore -->
 <template>
-     <lightning-card title="Component-1">
-          <p>Received The Following {message2}</p>
+     <lightning-card>
+          <lightning-button variant="base" label="Show Active" title="Show Active Accounts" onclick={showActive} class="slds-m-left_x-small"></lightning-button>
+          <lightning-button variant="base" label="Show Inactive" title="Show Inactive Accounts" onclick={showInactive} class="slds-m-left_x-small"></lightning-button>
      </lightning-card>    
-     <lightning-card title="Case List">
-          
-     </lightning-card>
-     <c-component2 onselected={handleCase}></c-component2>
+     <p>Received The Following From The Child{message2}</p>
+     <c-component-2></c-component-2>
 </template>

@@ -1,5 +1,5 @@
 import { LightningElement, api, wire, track} from 'lwc';
-import caseList from '@salesforce/apex/active_Inactive_Accounts.caseList';
+import caseList from '@salesforce/apex/active_Inactive_Accounts.caselist';
 export default class Component1 extends LightningElement 
 {
     @track message; 
@@ -22,5 +22,16 @@ export default class Component1 extends LightningElement
        this.message2=childValue2;
        caseList(accountId,this.message2);
        console.log('Console log Case method triggered') ;
+    }
+    showActive()
+    {
+        console.log('Console log Parent showActive');
+        this.template.querySelector("c-component-2").showActive(); 
+        
+    }
+    showInActive()
+    {
+        console.log('Console log Parent showInactive');
+        this.template.querySelector("c-component-2").showInactive(); 
     }
 }

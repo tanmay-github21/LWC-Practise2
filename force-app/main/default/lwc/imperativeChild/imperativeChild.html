@@ -1,5 +1,9 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
 <template>
     <lightning-card title="Imperative-Child">
+        <lightning-button label="Call Parent" onclick={callParent}></lightning-button>
         <template if:true={accounts1}>
              <lightning-datatable key-field="Id" 
                                   data={accounts1} 

@@ -9,6 +9,7 @@
                                  alternative-text="Sync The App" 
                                  slot="actions"></lightning-button-icon>
      </lightning-card>
-     <c-imperative-child></c-imperative-child>
-   <c-imperative-child onpassparent={handleSelectedRows}></c-imperative-child>   
+     <p>{message}</p>
+     <p>{message2}</p>
+   <c-imperative-child onselected={handleSelectedRows} onpasstext={handleChildEvent}></c-imperative-child>   
 </template> 
