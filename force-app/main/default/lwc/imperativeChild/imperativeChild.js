@@ -18,6 +18,8 @@ export default class ImperativeChild extends LightningElement {
      text;
      columns=columns; 
      @api publicProperty;
+     @api caseArray;
+     @track error; 
      @api handleValueChange()
      {
          console.log('Called By Parent');
@@ -41,13 +43,20 @@ export default class ImperativeChild extends LightningElement {
          const passParent2= new CustomEvent('passtext',{detail:this.text});
          this.dispatchEvent(passParent2);
      }
-     event_CaseListner=event=>
-     {
-        const selectedrow = event.detail.row;
-        this.publicProperty=selectedrow; 
-        console.log('Console log',selectedrow); 
-        const const_CaseListner= new CustomEvent('caselistner',{detail:this.publicProperty, bubbles:true});
-        this.dispatchEvent(const_CaseListner);
+    event_CaseListner=event=>
+    {
+        console.log('Console log');
+        var selectedId= this.template.querySelector("lightning-datatable").getSelectedRows(); 
+        let cleanedId= '';
+        selectedId.forEach(element => {cleanedId=cleanedId+','+element.Id});
+        console.log(cleanedId); 
+        this.publicProperty=cleanedId.replace(/^,/,''); 
+        console.log(this.publicProperty);
+        caselist({accountId:this.publicProperty})
+        .then(result=> {this.caseArray=result; console.log(this.caseArray);})
+        .catch(error=>{this.error=error; console.error(error);});
+        const passParent3= new CustomEvent('casearray',{detail:this.caseArray}); 
+        this.dispatchEvent(passParent3);
         
-     }
+    }
 }
