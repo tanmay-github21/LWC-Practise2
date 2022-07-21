@@ -13,6 +13,7 @@ export default class ImperativeChild extends LightningElement {
      
      accounts1;
      accounts2;
+     cases;
      recordId;
      text;
      columns=columns; 
@@ -34,20 +35,19 @@ export default class ImperativeChild extends LightningElement {
          .catch(error=>{this.error=error; console.log('Error Occured'+'\t'+error);}); 
      }
 
-     handleRowSelection = event => 
-     {
-         var selectedId= this.template.querySelector("lightning-datatable").getSelectedRows(); 
-         let id='';
-         selectedId.forEach(currentElement => {id=id+','+currentElement.Id});        
-         this.publicProperty=id.replace(/^,/,''); 
-         const passParent= new CustomEvent('caselist', {detail:{accountid: this.publicProperty}}); 
-         this.dispatchEvent(passParent); 
-         console.log('console log from imperative child event passed to apex class');
-     }
-     callParent=event=>
+    callParent=event=>
      {
          this.text='Hello this is tanmay'; 
          const passParent2= new CustomEvent('passtext',{detail:this.text});
          this.dispatchEvent(passParent2);
+     }
+     event_CaseListner=event=>
+     {
+        const selectedrow = event.detail.row;
+        this.publicProperty=selectedrow; 
+        console.log('Console log',selectedrow); 
+        const const_CaseListner= new CustomEvent('caselistner',{detail:this.publicProperty, bubbles:true});
+        this.dispatchEvent(const_CaseListner);
+        
      }
 }

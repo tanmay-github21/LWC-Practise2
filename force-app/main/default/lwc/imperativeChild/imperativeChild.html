@@ -2,13 +2,14 @@
 <!-- sldsValidatorIgnore -->
 <!-- sldsValidatorIgnore -->
 <template>
-    <lightning-card title="Imperative-Child">
+    <lightning-card title="Imperative-Child DataTable">
         <lightning-button label="Call Parent" onclick={callParent}></lightning-button>
+        <lightning-button label="Event Listener" onclick={eventlistner}></lightning-button>
         <template if:true={accounts1}>
              <lightning-datatable key-field="Id" 
                                   data={accounts1} 
                                   columns={columns} 
-                                  onrowselection={handleRowSelection}
+                                  onrowselection={event_CaseListner}
                                   onrowaction={handleRowAction}
                                   max-row-selection="1">
              </lightning-datatable>
@@ -18,7 +19,7 @@
             <lightning-datatable key-field="Id" 
                                  data={accounts2} 
                                  columns={columns} 
-                                 onrowselection={handleRowSelection}
+                                 onrowselection={event_CaseListner}
                                  onrowaction={handleRowAction}
                                  max-row-selection="1">
             </lightning-datatable>

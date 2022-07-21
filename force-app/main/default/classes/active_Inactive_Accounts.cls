@@ -25,10 +25,11 @@ public class active_Inactive_Accounts
     }
     
     @AuraEnabled
-    public static List<Case> caseList(String accountid){
+    public static List<Case> caselist(String accountid){
+        System.debug('Entered into case retreive method');
         try 
         {
-           System.debug('Hello from apex class'+'\t'+'Id received is'+'\t'+accountId); 
+           System.debug('caselist method'+'\t'+'Id received is'+'\t'+accountid); 
            List<Case> cases= new List<Case> ([Select CaseNumber, Status, accountId from Case WHERE AccountId=:accountid])    ;
            if(cases.size()>0)
            {
