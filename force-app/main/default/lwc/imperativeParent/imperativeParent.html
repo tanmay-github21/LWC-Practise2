@@ -12,5 +12,15 @@
      <p>{message}</p>
      <p>{message2}</p>
      <p>{message3}</p>
-   <c-imperative-child onpasstext={handlePassText} oncasearray={handlePassCase}></c-imperative-child>   
+     <p>{message5}</p>
+     <template if:true={message3}>
+          <lightning-datatable key-field="Id" data={message3} columns={casecolumns}></lightning-datatable>
+     </template>
+     <template if:true={message5}>
+          <lightning-datatable key-field="Id" data={message5} columns={casecolumns}></lightning-datatable>
+     </template>
+   <c-imperative-child onpasstext={handlePassText} 
+                       oncasearray={handlePassCase}
+                       oncasesforinactives={handleAccounts_TypeNull}>
+   </c-imperative-child>   
 </template> 
