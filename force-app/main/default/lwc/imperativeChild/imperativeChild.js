@@ -15,14 +15,11 @@ export default class ImperativeChild extends LightningElement {
      
      accounts1;
      accounts2;
-     cases;
      recordId;
      text;
      columns=columns; 
      @api publicProperty;
      @api publicProperty2; 
-     @api caseArray=[];
-     @api caseArray2='';
      @track error; 
      @api handleValueChange()
      {
@@ -39,46 +36,20 @@ export default class ImperativeChild extends LightningElement {
          .catch(error=>{this.error=error; console.log('Error Occured'+'\t'+error);}); 
      }
 
-    callParent=event=>
-     {
-         this.text='Hello this is tanmay'; 
-         const passParent2= new CustomEvent('passtext',{detail:this.text});
-         this.dispatchEvent(passParent2);
-     }
     event_CaseListner=event=>
-    {
-        console.log('Console log');
+     {
+        console.log('Entered into Datatable active method');
         var selectedId= this.template.querySelector("lightning-datatable").getSelectedRows(); 
         let cleanedId= '';
         selectedId.forEach(element => {cleanedId=cleanedId+','+element.Id});
-        console.log(cleanedId); 
+        console.log('Cleaned Id active accounts',cleanedId); 
         this.publicProperty=cleanedId.replace(/^,/,''); 
-        console.log(this.publicProperty);
-        caselist({accountId:this.publicProperty})
-        .then (result=> 
-        {
-            this.cases= result; 
-            console.log('Console log within result method',result);
-            result.forEach(element => {
-                const cars={};
-                cars.CaseNumber=element.CaseNumber;
-                cars.Id= element.Id;
-                const set_Array= new Set([cars.Id, cars.CaseNumber]);
-                // const arr=Array.from(set_Array);
-                this.caseArray= Array.from(set_Array);
-             });
-             const passParent3= new CustomEvent('casearray',{detail:this.caseArray}); 
-             console.log('Child Component Before Firing the event'+'\t'+this.caseArray.length); 
-             this.dispatchEvent(passParent3); 
-
-
-        })
-        .catch(error=>
-        {
-            this.error= error;
-            console.error('Error Occured',error);
-        })
-    }
+        console.log('Cleaned Id active accounts',this.publicProperty); 
+        const passParent3= new CustomEvent('activecases',{detail:this.publicProperty});
+        console.log('Before event gets dispatched from child component'+'\t'+this.publicProperty);
+        this.dispatchEvent(passParent3); 
+        console.log('Event Dispatched from child');
+     }
     event_CaseListner2= event=> 
     {
         console.log('Inactive method');
@@ -88,10 +59,7 @@ export default class ImperativeChild extends LightningElement {
         console.log(cleanedId2); 
         this.publicProperty2=cleanedId2.replace(/^,/,''); 
         console.log(this.publicProperty2);
-        // caselist({accountId:this.publicProperty2})
-        // .then (result2=>{this.caseArray22= result2; console.log('Console log within result method',result2);})
-        // .catch(error=>{this.error=error; console.error('Console error occured while fetching cases'+'\t'+error);}); 
-        const passParent4= new CustomEvent('casesforinactives',{detail:this.publicProperty2});
+        const passParent4= new CustomEvent('inactivecases',{detail:this.publicProperty2});
         this.dispatchEvent(passParent4);
     } //end of event_CaseListner2
 }

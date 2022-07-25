@@ -3,8 +3,6 @@
 <!-- sldsValidatorIgnore -->
 <template>
     <lightning-card title="Imperative-Child-_Datatable">
-        <lightning-button label="Call Parent" onclick={callParent}></lightning-button>
-        <lightning-button label="Event Listener" onclick={eventlistner}></lightning-button>
         <template if:true={accounts1}>
              <lightning-datatable key-field="Id" 
                                   data={accounts1} 
@@ -12,13 +10,15 @@
                                   onrowselection={event_CaseListner}
                                   onrowaction={handleRowAction}>
              </lightning-datatable>
-            </template> 
-            <template if:true={accounts2}>
-                 <lightning-datatable key-field="Id"
+        </template> 
+
+        <template if:true={accounts2}>
+            <lightning-datatable key-field="Id"
                                       data={accounts2}
                                       columns={columns}
-                                      onrowselection={event_CaseListner2}></lightning-datatable>
-            </template>
+                                      onrowselection={event_CaseListner2}>
+            </lightning-datatable>
+        </template>
             
     </lightning-card>
 </template>

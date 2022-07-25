@@ -1,7 +1,7 @@
 <!-- sldsValidatorIgnore -->
 <!-- sldsValidatorIgnore -->
 <template>
-     <lightning-card title="Parent-Imperative">
+     <lightning-card title="Parent-Imperative With Css" class="textColor">
           <lightning-button label="Show Active" onclick={show_Active}></lightning-button>
           <lightning-button label="Show Inactive" onclick={show_Inactive}></lightning-button>
           <lightning-button-icon icon-name="utility:sync" 
@@ -9,18 +9,16 @@
                                  alternative-text="Sync The App" 
                                  slot="actions"></lightning-button-icon>
      </lightning-card>
-     <p>{message}</p>
-     <p>{message2}</p>
-     <p>{message3}</p>
      <p>{message5}</p>
-     <template if:true={message3}>
-          <lightning-datatable key-field="Id" data={message3} columns={casecolumns}></lightning-datatable>
-     </template>
+     
      <template if:true={message5}>
           <lightning-datatable key-field="Id" data={message5} columns={casecolumns}></lightning-datatable>
      </template>
-   <c-imperative-child onpasstext={handlePassText} 
-                       oncasearray={handlePassCase}
-                       oncasesforinactives={handleAccounts_TypeNull}>
+
+     <template if:true={message6}>
+          <lightning-datatable key-field="Id" data={message6} columns={casecolumns}></lightning-datatable>
+     </template>
+   <c-imperative-child onactivecases={handleActiveAccounts}
+                       oninactivecases={handleInactiveAccounts}>
    </c-imperative-child>   
 </template> 
